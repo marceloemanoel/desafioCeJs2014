@@ -15,7 +15,7 @@
             error(request);
         });
 
-        if(method === 'POST') {
+        if(route.method === 'POST') {
             request.send(data);
         }
         else {
