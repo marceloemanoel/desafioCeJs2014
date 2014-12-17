@@ -1,12 +1,11 @@
 (function(window){
-    window.ajax = function(url, options) {
-        var method = options.method || 'GET',
-            data = options.data || {},
+    window.ajax = function(route, options) {
+        var data = options.data || {},
             success = options.success || function(response){},
             error = options.error || function(response){},
             request = new XMLHttpRequest();
         
-        request.open(method, url, true);
+        request.open(route.method, route.url, true);
         request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 
         request.addEventListener("load", function(evt) {
