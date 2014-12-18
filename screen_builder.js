@@ -57,6 +57,7 @@
             }
     
             DOMLabel.innerText = field.name + (field.mandatory ? "*" : "");
+            DOMLabel.className = "control-label";
             DOMLabel.for = DOMInput.id;
             
             return DOMDiv;
