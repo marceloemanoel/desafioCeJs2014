@@ -105,11 +105,11 @@
                 DOMForm.appendChild(createSection(section));
             });
             
-            form.isValid = function() {
+            DOMForm.isValid = function() {
                 return isValid(form);
             };
             
-            form.highlightProblems = function() {
+            DOMForm.highlightProblems = function() {
                 highlightProblems(form);
             };
             
