@@ -106,11 +106,11 @@
             });
             
             DOMForm.isValid = function() {
-                return isValid(form);
+                return isValid(DOMForm);
             };
             
             DOMForm.highlightProblems = function() {
-                highlightProblems(form);
+                highlightProblems(DOMForm);
             };
             
             return DOMForm;
