@@ -1,5 +1,9 @@
 (function(window){
       window.ScreenBuilder = function() {
+            
+        function toArray(object) { 
+            return [].slice.call(object, 0); 
+        }
         
         function makeItRequired(input) {
             input.setAttribute("required", "");
@@ -100,7 +104,34 @@
             screen.sections.forEach(function(section) {
                 DOMForm.appendChild(createSection(section));
             });
+            
+            form.isValid = function() {
+                return isValid(form);
+            };
+            
+            form.highlightProblems = function() {
+                highlightProblems(form);
+            };
+            
             return DOMForm;
         };
+        
+        function isValid(form) {
+            return toArray(form.elements)
+                         .map(function (input) { return input.checkValidity(); })
+                         .reduce(function (v1, v2) { return v1 && v2; }, true);
+        }
+
+        function highlightProblems(form) {
+            toArray(form.elements)
+                  .filter(function (input) { return !input.checkValidity(); })
+                  .forEach(function (input) {
+                        var parent = input.parentElement || input.parentNode;
+                        if (parent && parent.tagName.toUpperCase() === "DIV") {
+                              parent.classList.add("has-error");
+                        }
+                  });
+        }
+
     }
 })(window);
