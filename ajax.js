@@ -16,6 +16,7 @@
         });
 
         if(route.method === 'POST') {
+            request.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=UTF-8");
             request.send(data);
         }
         else {
